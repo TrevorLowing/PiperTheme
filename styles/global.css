@@ -1,0 +1,250 @@
+/* They Live inspired theme */
+:root {
+  --primary: #000000;
+  --secondary: #ffffff;
+  --accent: #ff0000;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --glitch-color: #0000ff;
+  --overlay-color: rgba(0, 0, 0, 0.7);
+}
+
+@font-face {
+  font-family: 'Propaganda';
+  src: url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+}
+
+body {
+  font-family: 'Courier New', monospace;
+  background-color: var(--primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.propaganda-text {
+  font-family: 'Anton', 'Impact', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.glitch-effect {
+  position: relative;
+  color: var(--secondary);
+}
+
+.glitch-effect::before,
+.glitch-effect::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.glitch-effect::before {
+  color: var(--glitch-color);
+  z-index: -1;
+  transform: translateX(-5px);
+  animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+.glitch-effect::after {
+  color: var(--accent);
+  z-index: -2;
+  transform: translateX(5px);
+  animation: glitch-anim 2s infinite linear alternate-reverse;
+}
+
+.hidden-message {
+  position: relative;
+  overflow: hidden;
+}
+
+.hidden-message::after {
+  content: attr(data-hidden-message);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary);
+  color: var(--primary);
+  font-family: 'Anton', 'Impact', sans-serif;
+  font-size: 2rem;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(100%);
+  z-index: 10;
+}
+
+.hidden-message:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip-path: inset(80% 0 0 0);
+  }
+  5% {
+    clip-path: inset(10% 0 60% 0);
+  }
+  10% {
+    clip-path: inset(40% 0 30% 0);
+  }
+  15% {
+    clip-path: inset(20% 0 40% 0);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+  }
+  25% {
+    clip-path: inset(0 0 100% 0);
+  }
+  30% {
+    clip-path: inset(100% 0 0 0);
+  }
+  35% {
+    clip-path: inset(30% 0 40% 0);
+  }
+  40% {
+    clip-path: inset(50% 0 20% 0);
+  }
+  45% {
+    clip-path: inset(70% 0 0 0);
+  }
+  50% {
+    clip-path: inset(0 0 70% 0);
+  }
+  55% {
+    clip-path: inset(20% 0 30% 0);
+  }
+  60% {
+    clip-path: inset(0 0 90% 0);
+  }
+  65% {
+    clip-path: inset(90% 0 0 0);
+  }
+  70% {
+    clip-path: inset(40% 0 30% 0);
+  }
+  75% {
+    clip-path: inset(10% 0 60% 0);
+  }
+  80% {
+    clip-path: inset(50% 0 30% 0);
+  }
+  85% {
+    clip-path: inset(0 0 80% 0);
+  }
+  90% {
+    clip-path: inset(80% 0 0 0);
+  }
+  95% {
+    clip-path: inset(30% 0 50% 0);
+  }
+  100% {
+    clip-path: inset(70% 0 10% 0);
+  }
+}
+
+/* TV static effect */
+.static-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj4KICA8ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj4KICAgIDxmZVR1cmJ1bGVuY2UgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIiB0eXBlPSJmcmFjdGFsTm9pc2UiLz4KICAgIDxmZUNvbG9yTWF0cml4IHZhbHVlcz0iMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgLjAyIDAiLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMzAwJSIgaGVpZ2h0PSIzMDAlIiBmaWx0ZXI9InVybCgjYSkiLz4KPC9zdmc+');
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 100;
+}
+
+/* Scanline effect */
+.scanline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0.75;
+  animation: scanline 6s linear infinite;
+  pointer-events: none;
+  z-index: 101;
+}
+
+@keyframes scanline {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Section styles */
+.section {
+  padding: 5rem 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary);
+  color: var(--primary);
+  text-transform: uppercase;
+  font-weight: bold;
+  border: 2px solid var(--secondary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: var(--secondary);
+}
+
+.btn::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  background: var(--accent);
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+
+.btn:hover::before {
+  transform: translateY(0);
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}

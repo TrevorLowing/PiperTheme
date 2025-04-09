@@ -1,0 +1,23 @@
+# Enable PHP execution
+AddHandler application/x-httpd-php .php
+
+# Set default index file
+DirectoryIndex index.php
+
+# Enable CORS if needed
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+</IfModule>
+
+# Redirect all requests to index.php except for actual files and directories
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # If the request is not for a valid file or directory
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Redirect to index.php
+    RewriteRule ^ index.php [L]
+</IfModule>
