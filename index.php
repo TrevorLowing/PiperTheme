@@ -1,7 +1,7 @@
 <?php
 // Basic configuration
 $config = [
-    'site_title' => 'WordPress Consulting Agency',
+    'site_title' => 'Piper Consulting Agency',
     'site_description' => 'Expert WordPress consulting and agency services with a unique \'They Live\' inspired approach'
 ];
 
